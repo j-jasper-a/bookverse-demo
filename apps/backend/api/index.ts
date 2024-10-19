@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import { helloFromLibs } from "@bookverse-demo/libs";
 import { helloFromLibsInside } from "@bookverse-demo/libs/hello/hello.js";
@@ -32,7 +32,7 @@ const app = express();
 app.use(cors({ origin: true }));
 app.use(express.json());
 
-app.get("/", (request, response) => {
+app.get("/", (request: Request, response: Response) => {
   response.status(200).json({
     local: `✅ "@bookverse-demo/backend" is active.`,
     importOne: helloFromLibs(),
