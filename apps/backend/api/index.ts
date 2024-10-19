@@ -1,5 +1,7 @@
 import express from "express";
 import cors from "cors";
+import { helloFromLibs } from "@bookverse-demo/libs";
+import { helloFromLibsInside } from "@bookverse-demo/libs/hello/hello";
 
 /*
 import admin from "firebase-admin";
@@ -31,7 +33,11 @@ app.use(cors({ origin: true }));
 app.use(express.json());
 
 app.get("/", (request, response) => {
-  response.status(200).json({ message: "Hello World!" });
+  response.status(200).json({
+    local: `✅ "@bookverse-demo/backend" is active.`,
+    importOne: helloFromLibs(),
+    importTwo: helloFromLibsInside(),
+  });
 });
 
 if (process.env.NODE_ENV === "development") {
