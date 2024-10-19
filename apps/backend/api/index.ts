@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { helloFromLibs } from "@bookverse-demo/libs";
-import { helloFromLibsInside } from "@bookverse-demo/libs/hello/hello";
+import { helloFromLibsInside } from "@bookverse-demo/libs/hello/hello.js";
 
 /*
 import admin from "firebase-admin";
