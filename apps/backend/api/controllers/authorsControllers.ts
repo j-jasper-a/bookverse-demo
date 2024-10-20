@@ -2,8 +2,8 @@ import {
   AuthorSchema,
   AuthorType,
 } from "@bookverse-demo/libs/models/authorModel.js";
-import { db } from "@/index.js";
 import { NextFunction, Request, Response } from "express";
+import { db } from "../index.js";
 
 export const createAuthor = async (
   request: Request,

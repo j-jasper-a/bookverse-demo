@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import admin from "firebase-admin";
 import dotenv from "dotenv";
-import { authorsRoutes } from "@/routes/authorsRoutes.js";
+import { authorsRoutes } from "./routes/authorsRoutes.js";
 
 dotenv.config({ path: `.env.local` });
 

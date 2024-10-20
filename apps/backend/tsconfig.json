@@ -7,9 +7,6 @@
     "strict": true,
     "isolatedModules": true,
     "moduleResolution": "NodeNext",
-    "skipLibCheck": true,
-    "paths": {
-      "@/*": ["./api/*"]
-    }
+    "skipLibCheck": true
   }
 }
