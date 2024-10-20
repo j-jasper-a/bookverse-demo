@@ -1,4 +1,4 @@
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import admin from "firebase-admin";
 import dotenv from "dotenv";
@@ -26,6 +26,13 @@ const app = express();
 app.use(cors({ origin: true }));
 app.use(express.json());
 
+app.use("/", (request: Request, response: Response, next: NextFunction) => {
+  try {
+    response.status(200).send("👋 Hello from the backend!");
+  } catch (error) {
+    return next(error);
+  }
+});
 app.use("/authors", authorsRoutes);
 
 if (process.env.NODE_ENV === "development") {
