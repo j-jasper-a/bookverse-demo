@@ -6,6 +6,9 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "moduleResolution": "NodeNext",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": ["./api/*"]
+    }
   }
 }
