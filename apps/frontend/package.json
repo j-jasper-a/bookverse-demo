@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@bookverse-demo/libs": "workspace:*",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.1.4",
     "next": "14.2.15",
     "next-intl": "^3.21.1",
     "react": "^18",
