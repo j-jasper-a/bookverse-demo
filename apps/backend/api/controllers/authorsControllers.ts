@@ -5,6 +5,19 @@ import {
 import { NextFunction, Request, Response } from "express";
 import { db } from "../index.js";
 
+export const getAuthors = async (
+  request: Request,
+  response: Response,
+  next: NextFunction
+) => {
+  try {
+    const authors = await db.collection("authors").get();
+    return response.status(200).json(authors.docs.map((doc) => doc.data()));
+  } catch (error) {
+    return next(error);
+  }
+};
+
 export const createAuthor = async (
   request: Request,
   response: Response,
