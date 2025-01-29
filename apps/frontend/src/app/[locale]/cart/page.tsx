@@ -82,6 +82,8 @@ export default function Home() {
                   <Paper
                     sx={{
                       aspectRatio: "1/1.65",
+                      width: "100%",
+                      maxWidth: "8rem",
                       overflow: "hidden",
                       borderRadius: 2,
                       border: "2px solid #000000",
@@ -105,7 +107,7 @@ export default function Home() {
                       />
                     </Link>
                   </Paper>
-                  <Stack>
+                  <Stack direction={"column"} sx={{ width: "100%" }}>
                     <Typography variant={"h4"}>{book.title}</Typography>
                     <Typography variant={"subtitle2"}>
                       {book.authors[0].name}
