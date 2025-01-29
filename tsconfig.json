@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "moduleResolution": "NodeNext",
+    "skipLibCheck": true,
+      },
+      "references": [
+        {
+          "path": "./apps/frontend"
+        },
+        {
+          "path": "./apps/backend"
+        }        
+      ],
+  "exclude": ["node_modules"]
+}

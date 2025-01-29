@@ -1,0 +1,12 @@
+{
+  "genres": {
+    "biography": "Biography",
+    "fantasy": "Fantasy",
+    "horror": "Horror",
+    "romance": "Romance",
+    "science-fiction": "Science Fiction",
+    "mystery": "Mystery",
+    "poetry": "Poetry",
+    "self-help": "Self Help"
+  }
+}
