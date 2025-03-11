@@ -68,7 +68,7 @@ const BookCard = ({ book }: Props) => {
           </Link>
           <Link
             component={NextLink}
-            href={`/authors/${book.authors[0].slug}`}
+            href={`/books?authorId=${book.authors[0].id}`}
             variant="body2"
             color={"text.secondary"}
           >

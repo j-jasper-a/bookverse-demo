@@ -47,7 +47,7 @@ const AuthorCard = ({ author }: Props) => {
             },
           }}
         >
-          <Link component={NextLink} href={`/authors/${author.slug}`}>
+          <Link component={NextLink} href={`/books?authorId=${author.id}`}>
             <Image
               src={author.imageUrl}
               alt={author.name}
@@ -60,7 +60,7 @@ const AuthorCard = ({ author }: Props) => {
         <Stack direction={"column"}>
           <Link
             component={NextLink}
-            href={`/books/${author.slug}`}
+            href={`/books?authorId=${author.id}`}
             variant="h3"
           >
             {author.name}

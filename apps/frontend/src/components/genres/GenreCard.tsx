@@ -9,7 +9,7 @@ type Props = {
 const GenreCard = ({ genre }: Props) => {
   return (
     <Grid key={genre.id} size={{ xs: 6, sm: 6, md: 2 }}>
-      <Link component={NextLink} href={`/books/${genre.slug}`}>
+      <Link component={NextLink} href={`/books?genreId=${genre.id}`}>
         <Box
           sx={{
             p: "0.5rem",
