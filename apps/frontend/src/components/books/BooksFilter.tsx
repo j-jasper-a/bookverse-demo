@@ -52,39 +52,39 @@ const filters: FilterType[] = [
   },
   {
     label: "Genre",
-    value: "genre",
+    value: "genreId",
     options: [
       {
         label: "Biography",
-        value: "biography",
+        value: "bVOCHJffkl-aPYyqfRoax",
       },
       {
         label: "Fantasy",
-        value: "fantasy",
+        value: "irJIaAjkmjtuoEXsrSg4X",
       },
       {
         label: "Horror",
-        value: "horror",
+        value: "FvBhSaEYEXMdi6ase7SEb",
       },
       {
         label: "Mystery",
-        value: "mystery",
+        value: "nx0K0-rAdDto6Pxmbl4N8",
       },
       {
         label: "Poetry",
-        value: "poetry",
+        value: "yhur86lr-poetry",
       },
       {
         label: "Romance",
-        value: "romance",
+        value: "fQbt7zXUyt2OxQbYXlpW-",
       },
       {
         label: "Science Fiction",
-        value: "science-fiction",
+        value: "Nv6RgX1W5HDe60GKt4cyX",
       },
       {
         label: "Self Help",
-        value: "self-help",
+        value: "B0MExVqDwc5M22j4gZI3i",
       },
     ],
   },

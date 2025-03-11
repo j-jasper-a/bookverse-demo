@@ -25,19 +25,29 @@ export default function Home() {
   const params = new URLSearchParams(searchParams.toString());
   const router = useRouter();
 
-  const price = searchParams.get("price");
-  const genre = searchParams.get("genre");
+  // Read filters from URL using the new keys
+  const authorId = searchParams.get("authorId");
+  const genreId = searchParams.get("genreId");
   const page = Number(searchParams.get("page")) || 1;
   const pageSize = Number(searchParams.get("pageSize")) || 8;
   const sortOption = searchParams.get("sort") || "title";
 
   const { data: booksResponse, isLoading } = useQuery({
-    queryKey: ["books", { price, genre, page, pageSize, sort: sortOption }],
-    queryFn: () => getBooks({ page, pageSize }),
+    queryKey: [
+      "books",
+      { authorId, genreId, page, pageSize, sort: sortOption },
+    ],
+    queryFn: () =>
+      getBooks({
+        page,
+        pageSize,
+        authorId: authorId || undefined,
+        genreId: genreId || undefined,
+      }),
   });
 
-  const handlePageChange = (_: any, page: number) => {
-    params.set("page", page.toString());
+  const handlePageChange = (_: any, newPage: number) => {
+    params.set("page", newPage.toString());
     router.push(`?${params.toString()}`);
   };
 
@@ -68,8 +78,8 @@ export default function Home() {
 
   return (
     <Container
-      component={"main"}
-      maxWidth={"xl"}
+      component="main"
+      maxWidth="xl"
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -87,16 +97,16 @@ export default function Home() {
         </Link>
       </Breadcrumbs>
 
-      <Stack direction={"row"} sx={{ width: "100%" }}>
-        <Stack direction={"row"} sx={{ gap: "2rem", width: "100%" }}>
+      <Stack direction="row" sx={{ width: "100%" }}>
+        <Stack direction="row" sx={{ gap: "2rem", width: "100%" }}>
           <BooksFilter />
           <Stack
-            direction={"column"}
+            direction="column"
             spacing={2}
             sx={{ alignItems: "center", width: "100%" }}
           >
             <Stack
-              direction={"row"}
+              direction="row"
               sx={{
                 alignItems: "center",
                 justifyContent: "space-between",
@@ -106,11 +116,13 @@ export default function Home() {
               {!booksResponse ? (
                 <Skeleton width={200} />
               ) : (
-                <Typography variant={"body2"}>
-                  {`${booksResponse.page * booksResponse.pageSize - booksResponse.pageSize + 1} - ${booksResponse.page * booksResponse.pageSize} of ${booksResponse.total} results`}
+                <Typography variant="body2">
+                  {`${booksResponse.page * booksResponse.pageSize - booksResponse.pageSize + 1} - ${
+                    booksResponse.page * booksResponse.pageSize
+                  } of ${booksResponse.total} results`}
                 </Typography>
               )}
-              <Stack direction={"row"} sx={{ gap: "0.5rem" }}>
+              <Stack direction="row" sx={{ gap: "0.5rem" }}>
                 <Select
                   variant="filled"
                   size="small"
@@ -123,14 +135,14 @@ export default function Home() {
                 <Select
                   variant="filled"
                   size="small"
-                  value={sortOption || "title"}
+                  value={sortOption}
                   onChange={handleSortChange}
                 >
                   <MenuItem value="title">Sort by: Title</MenuItem>
-                  <MenuItem value={"price-low-to-high"}>
+                  <MenuItem value="price-low-to-high">
                     Sort by: Price - Low to High
                   </MenuItem>
-                  <MenuItem value={"price-high-to-low"}>
+                  <MenuItem value="price-high-to-low">
                     Sort by: Price - High to Low
                   </MenuItem>
                 </Select>

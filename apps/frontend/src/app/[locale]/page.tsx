@@ -78,7 +78,7 @@ export default async function Home() {
             sx={{ alignItems: "center", justifyContent: "space-between" }}
           >
             <Typography variant={"h2"}>Genres</Typography>
-            <Link component={NextLink} variant="button" href="/genres">
+            <Link component={NextLink} variant="button" href="/">
               Explore Genres
             </Link>
           </Stack>
