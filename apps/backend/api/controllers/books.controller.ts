@@ -31,7 +31,6 @@ export const getBooks = async (
     const booksRef = db.collection("books");
     let query: FirebaseFirestore.Query = booksRef;
 
-    // Use array-contains for filtering based on array fields in your schema
     if (request.query.authorId) {
       query = query.where(
         "authorIds",
@@ -43,14 +42,11 @@ export const getBooks = async (
       query = query.where("genreIds", "array-contains", request.query.genreId);
     }
 
-    // Order by title and prepare the paginated query
     const filteredQuery = query.orderBy("title");
 
-    // Get the total count for the filtered query
     const totalBooksSnapshot = await filteredQuery.get();
     const totalBooksCount = totalBooksSnapshot.size;
 
-    // Get the paginated result
     const booksSnapshot = await filteredQuery
       .offset((page - 1) * pageSize)
       .limit(pageSize)

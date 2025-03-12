@@ -144,9 +144,6 @@ const theme: ThemeOptions = createTheme({
         root: {
           border: "1px solid #000000",
         },
-        notchedOutline: {
-          // border: "1px solid #000000",
-        },
         focused: {
           border: "2px solid #000000",
           boxShadow: "4px 4px 0px rgba(0, 0, 0, 1)",

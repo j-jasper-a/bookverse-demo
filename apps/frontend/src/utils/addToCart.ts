@@ -1,7 +1,6 @@
 import { getBooksByIds } from "@/data/books";
 import { BookSimpleDTOType } from "@bookverse-demo/libs";
 
-// add to cart in local storage
 export const addToCart = (id: string) => {
   const cart = localStorage.getItem("cart") || "[]";
   const cartItems = JSON.parse(cart);

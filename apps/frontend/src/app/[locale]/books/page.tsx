@@ -25,7 +25,6 @@ export default function Home() {
   const params = new URLSearchParams(searchParams.toString());
   const router = useRouter();
 
-  // Read filters from URL using the new keys
   const authorId = searchParams.get("authorId");
   const genreId = searchParams.get("genreId");
   const page = Number(searchParams.get("page")) || 1;
