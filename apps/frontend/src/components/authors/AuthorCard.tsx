@@ -1,16 +1,7 @@
 "use client";
 
-import { addToCart, isInCart } from "@/utils/addToCart";
-import formatPrice from "@/utils/formatPrice";
-import { AuthorSimpleDTOType, BookSimpleDTOType } from "@bookverse-demo/libs";
-import {
-  Grid2 as Grid,
-  Button,
-  Paper,
-  Link,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { AuthorSimpleDTOType } from "@bookverse-demo/libs";
+import { Grid2 as Grid, Paper, Link, Stack } from "@mui/material";
 import Image from "next/image";
 import NextLink from "next/link";
 import { usePathname, useRouter } from "next/navigation";

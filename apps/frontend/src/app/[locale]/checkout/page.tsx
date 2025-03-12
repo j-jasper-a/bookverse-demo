@@ -1,6 +1,6 @@
 "use client";
 
-import { clearCart } from "@/utils/addToCart";
+import { useCart } from "@/hooks/useCart";
 import { OrderSchema, OrderType } from "@bookverse-demo/libs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -17,6 +17,7 @@ import { useForm } from "react-hook-form";
 import { LuCheck as CheckIcon } from "react-icons/lu";
 
 export default function Home() {
+  const { clearCart } = useCart();
   const [submitted, setSubmitted] = useState(false);
   const router = useRouter();
   const { handleSubmit } = useForm<OrderType>({

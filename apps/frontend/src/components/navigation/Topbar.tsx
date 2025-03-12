@@ -2,7 +2,7 @@
 
 import BrandLogo from "../common/BrandLogo";
 import { navigationLinks } from "@/constants/navigationLinks";
-import { getCartCount } from "@/utils/addToCart";
+import { useCart } from "@/hooks/useCart";
 import {
   AppBar,
   Container,
@@ -26,6 +26,7 @@ import {
 
 const Topbar = () => {
   const theme = useTheme();
+  const { cartItemCount } = useCart();
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -64,7 +65,7 @@ const Topbar = () => {
             </Stack>
             <Stack direction="row" sx={{ gap: "1rem", alignItems: "center" }}>
               <Link component={NextLink} href="/cart">
-                <Badge badgeContent={getCartCount()} color="success">
+                <Badge badgeContent={cartItemCount()} color="success">
                   <CartIcon style={{ fontSize: "1.5rem" }} />
                 </Badge>
               </Link>

@@ -1,6 +1,6 @@
 "use client";
 
-import { getCartBooks, removeFromCart } from "@/utils/addToCart";
+import { useCart } from "@/hooks/useCart";
 import formatPrice from "@/utils/formatPrice";
 import {
   Button,
@@ -24,13 +24,14 @@ import { LuTrash as RemoveIcon } from "react-icons/lu";
 
 export default function Home() {
   const router = useRouter();
+  const { getCartBooks, removeCartItem } = useCart();
   const {
     data: books,
     isLoading,
     refetch,
   } = useQuery({
     queryKey: ["cart"],
-    queryFn: getCartBooks,
+    queryFn: () => getCartBooks(),
   });
 
   if (isLoading) {
@@ -50,7 +51,7 @@ export default function Home() {
   }
 
   const handleRemove = (bookId: string) => {
-    removeFromCart(bookId);
+    removeCartItem(bookId);
     refetch();
     router.refresh();
   };

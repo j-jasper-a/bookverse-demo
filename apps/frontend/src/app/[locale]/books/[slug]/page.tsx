@@ -1,7 +1,7 @@
 "use client";
 
 import { getBookBySlug } from "@/data/books";
-import { addToCart, isInCart } from "@/utils/addToCart";
+import { useCart } from "@/hooks/useCart";
 import formatPrice from "@/utils/formatPrice";
 import {
   Box,
@@ -34,6 +34,7 @@ type Props = {
 };
 
 export default function Home({ params }: Props) {
+  const { addCartItem, isInCart } = useCart();
   const { slug } = params;
   const { data: book, isLoading } = useQuery({
     queryKey: ["book", slug],
@@ -52,7 +53,7 @@ export default function Home({ params }: Props) {
   }
 
   const handleCart = () => {
-    addToCart(book.id);
+    addCartItem(book.id);
     router.refresh();
   };
 

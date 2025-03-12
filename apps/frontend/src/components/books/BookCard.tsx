@@ -1,6 +1,6 @@
 "use client";
 
-import { addToCart, isInCart } from "@/utils/addToCart";
+import { useCart } from "@/hooks/useCart";
 import formatPrice from "@/utils/formatPrice";
 import { BookSimpleDTOType } from "@bookverse-demo/libs";
 import {
@@ -21,10 +21,11 @@ type Props = {
 
 const BookCard = ({ book }: Props) => {
   const router = useRouter();
+  const { addCartItem, isInCart } = useCart();
   const isHome = usePathname().slice(3) === "";
 
   const handleCart = () => {
-    addToCart(book.id);
+    addCartItem(book.id);
     router.refresh();
   };
 
