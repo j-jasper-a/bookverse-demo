@@ -16,7 +16,7 @@ const theme: ThemeOptions = createTheme({
     },
     text: {
       primary: "#000000",
-      secondary: "#5C573E",
+      secondary: "#888888",
     },
     info: {
       main: "#000000",
