@@ -1,6 +1,7 @@
 import { authorsRouter } from "./routes/authors.route.js";
 import { booksRouter } from "./routes/books.route.js";
 import { genresRouter } from "./routes/genres.route.js";
+import { searchRouter } from "./routes/search.route.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import express, { NextFunction, Request, Response } from "express";
@@ -31,6 +32,7 @@ app.use(express.json());
 app.use("/genres", genresRouter);
 app.use("/authors", authorsRouter);
 app.use("/books", booksRouter);
+app.use("/search", searchRouter);
 
 if (process.env.NODE_ENV === "development") {
   const port = 3000;
