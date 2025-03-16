@@ -56,8 +56,10 @@ const BookSimpleDTOSchema = BookSchema.pick({
   imageUrl: true,
 }).extend({
   authors: z.array(AuthorDTOSchema.pick({ id: true, slug: true, name: true })),
+  genres: z.array(GenreDTOSchema),
   price: FormatSchema.shape.price,
   stockCount: FormatSchema.shape.stockCount,
+  isbn: FormatSchema.shape.isbn,
 });
 
 type BookType = z.infer<typeof BookSchema>;

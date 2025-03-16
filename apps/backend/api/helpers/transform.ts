@@ -127,6 +127,22 @@ export const transform = {
           return authorBookSimpleDTO;
         }),
       );
+      const genres: BookSimpleDTOType["genres"] = await Promise.all(
+        bookRaw.genreIds.map(async (genreId) => {
+          const genreSnapshot = await db
+            .collection("genres")
+            .doc(genreId)
+            .get();
+          const genreRaw = genreSnapshot.data() as GenreType;
+
+          const genreBookSimpleDTO: BookSimpleDTOType["genres"][number] = {
+            id: genreId,
+            slug: genreRaw.slug,
+            name: genreRaw.name,
+          };
+          return genreBookSimpleDTO;
+        }),
+      );
       const bookSimpleDTO: BookSimpleDTOType = {
         id: bookRaw.id,
         slug: bookRaw.slug,
@@ -138,6 +154,8 @@ export const transform = {
           0,
         ),
         authors,
+        genres,
+        isbn: bookRaw.formats[0].isbn,
       };
 
       return bookSimpleDTO;
