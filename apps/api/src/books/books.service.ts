@@ -59,34 +59,32 @@ export class BooksService {
   ): Promise<{ books: BookDto[]; totalPages: number }> {
     const { genreId, authorId, page, limit } = query;
 
-    let dbQuery: FirebaseFirestore.Query = this.collection;
+    let queryRef: FirebaseFirestore.Query = this.collection;
 
     if (genreId) {
-      dbQuery = dbQuery.where('genreIds', 'array-contains', genreId);
+      queryRef = queryRef.where('genreIds', 'array-contains', genreId);
     }
 
     if (authorId) {
-      dbQuery = dbQuery.where('authorIds', 'array-contains', authorId);
+      queryRef = queryRef.where('authorIds', 'array-contains', authorId);
     }
 
-    const countSnapshot = await dbQuery.count().get();
-    const count = countSnapshot.data()?.count ?? 0;
-    const totalPages = Math.ceil(count / limit);
+    const countSnapshot = await queryRef.count().get();
+    const totalCount = countSnapshot.data()?.count ?? 0;
+    const totalPages = Math.max(Math.ceil(totalCount / limit), 1);
 
-    const offset = (page - 1) * limit;
-    const paginatedQuery = dbQuery.offset(offset).limit(limit);
-    const booksSnapshot = await paginatedQuery.get();
+    const currentPage = Math.min(Math.max(page, 1), totalPages);
+    const offset = (currentPage - 1) * limit;
 
-    const booksData = booksSnapshot.empty
+    const snapshot = await queryRef.offset(offset).limit(limit).get();
+    const books = snapshot.empty
       ? []
-      : booksSnapshot.docs.map((doc) => doc.data() as Book);
+      : snapshot.docs.map((doc) => doc.data() as Book);
 
-    const booksDto = await Promise.all(
-      booksData.map((book) => this.toDto(book)),
-    );
+    const bookDtos = await Promise.all(books.map((book) => this.toDto(book)));
 
     return {
-      books: booksDto,
+      books: bookDtos,
       totalPages,
     };
   }
