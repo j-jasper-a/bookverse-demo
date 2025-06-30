@@ -1,6 +1,7 @@
 "use client";
 
 import { AuthorSection } from "@/components/books/author-section/author-section";
+import { MainSection } from "@/components/books/main-section/main-section";
 import { ReviewsSection } from "@/components/books/reviews-section/reviews-section";
 import { findBookBySlug } from "@/lib/api/books";
 import { Box, Breadcrumbs, Link, Typography } from "@mui/material";
@@ -33,6 +34,7 @@ export default function BookPage() {
               {book.name}
             </Typography>
           </Breadcrumbs>
+          <MainSection book={book} />
           <AuthorSection book={book} />
           <ReviewsSection book={book} />
         </>

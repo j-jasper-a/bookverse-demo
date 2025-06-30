@@ -42,7 +42,7 @@ function BooksPageContent() {
         <BooksFilterBar />
         <Box className="flex w-full flex-col gap-4">
           <BooksFilterSelect />
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {isLoading
               ? Array.from({ length: 8 }).map((_, index) => (
                   <BookCardSkeleton key={index} />

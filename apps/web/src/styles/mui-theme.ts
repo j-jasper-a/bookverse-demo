@@ -34,6 +34,7 @@ export const muiTheme = createTheme({
     },
     h1: {
       fontFamily: "var(--font-heading), sans-serif",
+      fontSize: "2.5rem",
     },
     h2: {
       fontFamily: "var(--font-heading), sans-serif",
