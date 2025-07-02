@@ -20,7 +20,10 @@ const fontHeading = FontHeading({
 });
 
 export const metadata: Metadata = {
-  title: "Bookverse Demo",
+  title: {
+    default: "Bookverse Demo",
+    template: "%s | Bookverse Demo",
+  },
   description: "A demo application for Bookverse",
 };
 

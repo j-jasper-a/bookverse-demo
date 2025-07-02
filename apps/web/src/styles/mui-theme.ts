@@ -47,7 +47,7 @@ export const muiTheme = createTheme({
       paper: "hsl(25, 100%, 95%)",
     },
     error: {
-      main: "hsl(0, 100%, 50%)",
+      main: "hsl(330, 50%, 50%)",
     },
     info: {
       main: "hsl(210, 100%, 50%)",
@@ -59,7 +59,7 @@ export const muiTheme = createTheme({
       main: "hsl(25, 40%, 85%)",
     },
     success: {
-      main: "hsl(120, 100%, 40%)",
+      main: "hsl(170, 100%, 30%)",
     },
     text: {
       disabled: "hsl(0, 0%, 60%)",
@@ -71,6 +71,40 @@ export const muiTheme = createTheme({
     },
   },
   components: {
+    MuiAvatar: {
+      defaultProps: {
+        variant: "circular",
+      },
+      styleOverrides: {
+        root: ({ theme }) => ({
+          border: `4px solid ${theme.palette.secondary.main}`,
+          ":hover": {
+            borderColor: theme.palette.success.main,
+          },
+        }),
+      },
+    },
+    MuiIconButton: {
+      defaultProps: {
+        size: "medium",
+        color: "inherit",
+        disableRipple: true,
+        disableFocusRipple: true,
+        disableTouchRipple: true,
+      },
+      styleOverrides: {
+        root: ({ theme }) => ({
+          ":hover": {
+            backgroundColor: theme.palette.secondary.main,
+          },
+        }),
+        sizeMedium: {
+          padding: "0rem",
+          height: "2rem",
+          width: "2rem",
+        },
+      },
+    },
     MuiButton: {
       defaultProps: {
         variant: "outlined",
@@ -158,6 +192,32 @@ export const muiTheme = createTheme({
       styleOverrides: {
         root: () => ({
           fontSize: "0.875rem",
+        }),
+      },
+    },
+    MuiMenu: {
+      styleOverrides: {
+        paper: () => ({
+          boxShadow: "none",
+          ":hover": {
+            boxShadow: "none",
+          },
+        }),
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          display: "flex",
+          alignItems: "center",
+          gap: "0.5rem",
+          fontWeight: "600",
+          padding: "0.5rem 1rem",
+          paddingRight: "4rem",
+          fontSize: "0.875rem",
+          ":hover": {
+            backgroundColor: theme.palette.secondary.main,
+          },
         }),
       },
     },

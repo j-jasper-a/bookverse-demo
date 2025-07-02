@@ -1,9 +1,10 @@
 "use client";
 
 import { BrandLogo } from "@/components/common/brand-logo";
+import { AccountMenu } from "@/components/common/header/account-menu";
+import { CartButton } from "@/components/common/header/cart-button";
 import { navLinks } from "@/data/nav-links";
-import { Avatar, Badge, Box, Button } from "@mui/material";
-import { ShoppingCartIcon } from "@phosphor-icons/react";
+import { Box, Button } from "@mui/material";
 import NextLink from "next/link";
 
 export function DesktopNav() {
@@ -16,7 +17,7 @@ export function DesktopNav() {
             <li key={navLink.href}>
               <Button
                 variant="text"
-                LinkComponent={NextLink}
+                component={NextLink}
                 href={navLink.href}
                 className="py-4"
                 disabled={navLink.disabled}
@@ -27,12 +28,8 @@ export function DesktopNav() {
           ))}
         </Box>
         <Box className="flex items-center gap-4">
-          <Avatar src="/assets/demo/user-avatar.webp" className="size-6">
-            JJ
-          </Avatar>
-          <Badge badgeContent={3} color="primary">
-            <ShoppingCartIcon className="size-6" />
-          </Badge>
+          <AccountMenu />
+          <CartButton />
         </Box>
       </Box>
     </Box>
